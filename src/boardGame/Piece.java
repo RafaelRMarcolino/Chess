@@ -6,7 +6,7 @@ public class Piece {
 
 	private Board board;
 
-	public Piece(Board board, Position position) {
+	public Piece(Board board) {
 		super();
 		this.board = board;
 		position = null;
