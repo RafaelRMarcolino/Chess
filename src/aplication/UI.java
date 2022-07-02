@@ -8,8 +8,6 @@ import Chess.ChessPosition;
 
 public class UI {
 
-	
-
 	public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
