@@ -24,7 +24,7 @@ public class UI {
 			throw new InputMismatchException("Error reding Chesspoint valid values are from a1 a h8");
 		}
 	}
-	
+
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
@@ -32,8 +32,15 @@ public class UI {
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Wating player: " + chessMatch.getCurrentPlayer());
-		if(chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+		if (chessMatch.getCheck()) {
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+
+			}
+		}else {
+			System.out.println("CHECKMATE");
+			System.out.println("winner: " + chessMatch.getCurrentPlayer());
 		}
 	}
 
@@ -50,8 +57,7 @@ public class UI {
 		System.out.print("  a b c d e f g h ");
 	}
 
-
-	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves ) {
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -64,7 +70,6 @@ public class UI {
 		System.out.print("  a b c d e f g h ");
 	}
 
-	
 	private static void printPiece(ChessPiece piece) {
 
 		if (piece == null) {
@@ -74,20 +79,19 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
-	
+
 	private static void printCapturePieces(List<ChessPiece> captured) {
-		
-		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
-		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+
+		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE)
+				.collect(Collectors.toList());
+		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK)
+				.collect(Collectors.toList());
 		System.out.println("Captured pieces: ");
 		System.out.println("White: ");
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.println("Black: ");
 		System.out.println(Arrays.toString(black.toArray()));
-		
-		
+
 	}
-	 
-	
 
 }
